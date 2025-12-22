@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
+import ReactGA from 'react-ga4';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Process from './components/Process';
@@ -14,6 +15,46 @@ import MobilityAdvisor from './components/MobilityAdvisor';
 
 const App: React.FC = () => {
   const [showAdvisor, setShowAdvisor] = useState(false);
+
+  // Initialize GA4 and track visitor location and source on component mount
+  useEffect(() => {
+    // Initialize GA4
+    const measurementId = import.meta.env.VITE_GA4_MEASUREMENT_ID || '';
+    if (measurementId) {
+      ReactGA.initialize(measurementId);
+      
+      // Track UTM parameters and referrer source
+      const params = new URLSearchParams(window.location.search);
+      const source = params.get('utm_source') || document.referrer || 'direct';
+      const medium = params.get('utm_medium') || 'organic';
+      const campaign = params.get('utm_campaign') || 'none';
+
+      // Send custom event with source and medium
+      ReactGA.event('page_view_with_source', {
+        source: source,
+        medium: medium,
+        campaign: campaign,
+        timestamp: new Date().toISOString(),
+      });
+
+      // Attempt to get location (requires geolocation API permission)
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            ReactGA.event('location_captured', {
+              latitude: position.coords.latitude.toFixed(4),
+              longitude: position.coords.longitude.toFixed(4),
+              accuracy: position.coords.accuracy.toFixed(0),
+            });
+          },
+          (error) => {
+            // Location permission denied or unavailable - silently continue
+            console.debug('Location access not available');
+          }
+        );
+      }
+    }
+  }, []);
 
   return (
     <div className="min-h-screen flex flex-col relative">
