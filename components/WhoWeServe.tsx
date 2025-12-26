@@ -38,14 +38,15 @@ const WhoWeServe: React.FC = () => {
             </div>
           </div>
           
-          <div className="lg:w-1/2 relative">
-             <div className="absolute -inset-4 bg-emerald-600/5 rounded-[40px] -rotate-2"></div>
+          <div className="lg:w-1/2 relative h-[600px] lg:h-[700px]">
+             <div className="absolute -inset-4 bg-emerald-600/5 rounded-[40px] -rotate-2 h-full"></div>
              <video 
                autoPlay
                muted
                loop
                playsInline
-               className="rounded-[32px] shadow-2xl relative z-10 w-full object-cover aspect-[9/16]"
+               className="rounded-[32px] shadow-2xl relative z-10 w-full h-full object-cover"
+               style={{ display: 'block' }}
              >
                <source src="/who-we-serve.mp4" type="video/mp4" />
              </video>
