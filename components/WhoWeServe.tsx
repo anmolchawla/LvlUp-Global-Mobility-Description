@@ -40,11 +40,15 @@ const WhoWeServe: React.FC = () => {
           
           <div className="lg:w-1/2 relative">
              <div className="absolute -inset-4 bg-emerald-600/5 rounded-[40px] -rotate-2"></div>
-             <img 
-               src="https://picsum.photos/seed/founders/800/1000" 
-               className="rounded-[32px] shadow-2xl relative z-10 w-full object-cover aspect-[4/5]" 
-               alt="Successful Team" 
-             />
+             <video 
+               autoPlay
+               muted
+               loop
+               playsInline
+               className="rounded-[32px] shadow-2xl relative z-10 w-full object-cover aspect-[9/16]"
+             >
+               <source src="/who-we-serve.mp4" type="video/mp4" />
+             </video>
           </div>
         </div>
       </div>
