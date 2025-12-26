@@ -41,16 +41,6 @@ const Hero: React.FC = () => {
             VIEW CASE STUDIES
           </button>
         </div>
-
-        <div className="mt-24 relative">
-          <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent z-10"></div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 opacity-40 grayscale">
-            <img src="https://picsum.photos/seed/mumbai/400/300" className="rounded-xl object-cover h-48 w-full" alt="City" />
-            <img src="https://picsum.photos/seed/dubai/400/300" className="rounded-xl object-cover h-48 w-full" alt="City" />
-            <img src="https://picsum.photos/seed/singapore/400/300" className="rounded-xl object-cover h-48 w-full" alt="City" />
-            <img src="https://picsum.photos/seed/london/400/300" className="rounded-xl object-cover h-48 w-full" alt="City" />
-          </div>
-        </div>
       </div>
     </section>
   );
