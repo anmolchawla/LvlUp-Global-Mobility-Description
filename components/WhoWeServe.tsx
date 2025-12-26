@@ -1,7 +1,37 @@
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
 const WhoWeServe: React.FC = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (videoRef.current) {
+        videoRef.current.play().catch((err) => {
+          console.error('Video play error:', err);
+        });
+      }
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const containerStyle: React.CSSProperties = {
+    position: 'relative',
+    borderRadius: '32px',
+    overflow: 'hidden',
+    boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+    width: '100%',
+    height: '600px',
+    backgroundColor: '#000'
+  };
+
+  const videoStyle: React.CSSProperties = {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    display: 'block'
+  };
+
   return (
     <section className="py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -39,17 +69,19 @@ const WhoWeServe: React.FC = () => {
           </div>
           
           <div className="lg:w-1/2">
-             <div className="relative rounded-[32px] overflow-hidden shadow-2xl bg-emerald-600/5 h-[600px] lg:h-[700px]">
-               <video 
-                 autoPlay
-                 muted
-                 loop
-                 playsInline
-                 className="w-full h-full object-cover"
-               >
-                 <source src="/who-we-serve.mp4" type="video/mp4" />
-               </video>
-             </div>
+            <div style={containerStyle}>
+              <video
+                ref={videoRef}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="auto"
+                style={videoStyle}
+              >
+                <source src="/who-we-serve.mp4" type="video/mp4" />
+              </video>
+            </div>
           </div>
         </div>
       </div>
