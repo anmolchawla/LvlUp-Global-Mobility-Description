@@ -45,11 +45,9 @@ const WhoWeServe: React.FC = () => {
                  muted
                  loop
                  playsInline
-                 controls
                  className="w-full h-full object-cover"
                >
                  <source src="/who-we-serve.mp4" type="video/mp4" />
-                 Your browser does not support the video tag.
                </video>
              </div>
           </div>
