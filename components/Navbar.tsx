@@ -8,7 +8,7 @@ const Navbar: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <div className="flex items-center gap-2">
-            <a href="#" className="flex items-center gap-2 group">
+            <a href="/" className="flex items-center gap-2 group">
               <div className="bg-slate-900 text-white font-black text-2xl w-10 h-10 flex items-center justify-center rounded-lg group-hover:bg-emerald-600 transition-colors">L</div>
               <span className="text-2xl font-black tracking-tighter text-slate-900">LvlUp</span>
             </a>
@@ -17,7 +17,6 @@ const Navbar: React.FC = () => {
           <div className="hidden md:flex items-center space-x-8">
             <a href="#process" className="text-[11px] font-bold tracking-[0.15em] text-slate-500 hover:text-slate-900 uppercase transition-colors">Process</a>
             <a href="#story" className="text-[11px] font-bold tracking-[0.15em] text-slate-500 hover:text-slate-900 uppercase transition-colors">My Story</a>
-            <a href="#blog" className="text-[11px] font-bold tracking-[0.15em] text-slate-500 hover:text-slate-900 uppercase transition-colors">Insights</a>
             <a href="#contact" className="text-[11px] font-bold tracking-[0.15em] text-slate-500 hover:text-slate-900 uppercase transition-colors">Talk To Us</a>
             <div className="h-6 w-px bg-slate-200 mx-2"></div>
             <BookingButton label="BECOME A CLIENT" />

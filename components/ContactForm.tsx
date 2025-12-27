@@ -24,7 +24,7 @@ const ContactForm: React.FC = () => {
       `Message:\n${formData.message}`
     );
     
-    window.location.href = `mailto:anmol@lvlup.click?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:help@lvlup.click?subject=${subject}&body=${body}`;
     setSubmitted(true);
   };
 
@@ -42,11 +42,11 @@ const ContactForm: React.FC = () => {
             </p>
             
             <div className="space-y-6">
-              <div className="flex items-center gap-4 text-slate-900 font-bold group cursor-pointer" onClick={() => window.location.href = 'mailto:anmol@lvlup.click'}>
+              <div className="flex items-center gap-4 text-slate-900 font-bold group cursor-pointer" onClick={() => window.location.href = 'mailto:help@lvlup.click'}>
                 <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center group-hover:bg-emerald-600 group-hover:text-white transition-all">
                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
                 </div>
-                anmol@lvlup.click
+                help@lvlup.click
               </div>
               
               <div className="pt-6 border-t border-slate-100">
@@ -69,7 +69,7 @@ const ContactForm: React.FC = () => {
                   <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                 </div>
                 <h3 className="text-2xl font-bold text-slate-900 mb-2">Inquiry Initialized</h3>
-                <p className="text-slate-600">Your email client should have opened. If not, please reach out directly to anmol@lvlup.click</p>
+                <p className="text-slate-600">Your email client should have opened. If not, please reach out directly to help@lvlup.click</p>
                 <button 
                   onClick={() => setSubmitted(false)}
                   className="mt-8 text-emerald-600 font-bold hover:underline"
@@ -141,7 +141,7 @@ const ContactForm: React.FC = () => {
                     type="submit"
                     className="w-full bg-slate-900 text-white font-bold py-5 rounded-2xl hover:bg-emerald-600 transition-all shadow-xl hover:shadow-emerald-600/20 active:scale-[0.98]"
                   >
-                    SEND MESSAGE TO ANMOL
+                    SEND
                   </button>
                   <p className="text-center mt-4 text-xs text-slate-400">
                     Your information is strictly confidential and protected by NDA.

@@ -37,7 +37,7 @@ const Hero: React.FC = () => {
             label="BECOME A CLIENT NOW" 
             className="w-full sm:w-auto"
           />
-          <button className="px-10 py-5 bg-white/90 border border-white text-slate-900 font-bold rounded-full hover:bg-white transition-all h-[64px] flex items-center justify-center min-w-[200px] backdrop-blur-sm">
+          <button className="px-10 py-5 bg-slate-900 text-white font-bold rounded-2xl hover:bg-emerald-600 transition-all shadow-xl hover:shadow-emerald-600/20 active:scale-[0.98] h-[64px] flex items-center justify-center min-w-[200px]">
             VIEW CASE STUDIES
           </button>
         </div>
