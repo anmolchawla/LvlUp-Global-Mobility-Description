@@ -48,20 +48,6 @@ const Footer: React.FC = () => {
             </ul>
           </div>
 
-          <div>
-            <h4 className="font-bold text-slate-900 mb-6 uppercase text-sm tracking-widest">Stay Informed</h4>
-            <p className="text-slate-500 mb-6 text-sm">Join 5,000+ Indian HNWIs receiving our weekly global mobility intelligence.</p>
-            <form className="flex flex-col gap-3">
-              <input 
-                type="email" 
-                placeholder="Your email address" 
-                className="bg-white border border-slate-200 px-4 py-3 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none transition-all"
-              />
-              <button className="bg-slate-900 text-white font-bold py-3 rounded-xl hover:bg-emerald-600 transition-colors">
-                SUBSCRIBE
-              </button>
-            </form>
-          </div>
         </div>
 
         <div className="pt-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-400 text-xs">

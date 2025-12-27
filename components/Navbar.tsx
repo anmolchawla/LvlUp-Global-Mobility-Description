@@ -17,6 +17,7 @@ const Navbar: React.FC = () => {
           <div className="hidden md:flex items-center space-x-8">
             <a href="#process" className="text-[11px] font-bold tracking-[0.15em] text-slate-500 hover:text-slate-900 uppercase transition-colors">Process</a>
             <a href="#story" className="text-[11px] font-bold tracking-[0.15em] text-slate-500 hover:text-slate-900 uppercase transition-colors">My Story</a>
+            <a href="#blog" className="text-[11px] font-bold tracking-[0.15em] text-slate-500 hover:text-slate-900 uppercase transition-colors">Insights</a>
             <a href="#contact" className="text-[11px] font-bold tracking-[0.15em] text-slate-500 hover:text-slate-900 uppercase transition-colors">Talk To Us</a>
             <div className="h-6 w-px bg-slate-200 mx-2"></div>
             <BookingButton label="BECOME A CLIENT" />
