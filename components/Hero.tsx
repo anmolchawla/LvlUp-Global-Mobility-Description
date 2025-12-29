@@ -1,5 +1,6 @@
 
 import React from 'react';
+import ReactGA from 'react-ga4';
 import BookingButton from './BookingButton';
 
 const Hero: React.FC = () => {
@@ -37,7 +38,10 @@ const Hero: React.FC = () => {
             label="BECOME A CLIENT NOW" 
             className="w-full sm:w-auto"
           />
-          <button className="px-10 py-5 bg-slate-900 text-white font-bold rounded-2xl hover:bg-emerald-600 transition-all shadow-xl hover:shadow-emerald-600/20 active:scale-[0.98] h-[64px] flex items-center justify-center min-w-[200px]">
+          <button 
+            onClick={() => ReactGA.event('button_click', { button_name: 'VIEW CASE STUDIES', button_location: 'hero' })}
+            className="px-10 py-5 bg-slate-900 text-white font-bold rounded-2xl hover:bg-emerald-600 transition-all shadow-xl hover:shadow-emerald-600/20 active:scale-[0.98] h-[64px] flex items-center justify-center min-w-[200px]"
+          >
             VIEW CASE STUDIES
           </button>
         </div>

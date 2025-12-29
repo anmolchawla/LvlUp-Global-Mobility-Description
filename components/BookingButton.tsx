@@ -1,5 +1,6 @@
 
 import React, { useEffect, useRef } from 'react';
+import ReactGA from 'react-ga4';
 
 interface BookingButtonProps {
   label: string;
@@ -44,8 +45,15 @@ const BookingButton: React.FC<BookingButtonProps> = ({
     }
   }, [label, color]);
 
+  const handleClick = () => {
+    ReactGA.event('button_click', {
+      button_name: label,
+      button_location: window.location.pathname,
+    });
+  };
+
   return (
-    <div ref={targetRef} className={`inline-block ${className}`}>
+    <div ref={targetRef} className={`inline-block ${className}`} onClick={handleClick}>
       {/* Fallback button styled to match while loading script */}
       <button className="bg-slate-900 text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-emerald-600 transition-colors animate-pulse">
         {label}
