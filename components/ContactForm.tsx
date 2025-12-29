@@ -10,22 +10,35 @@ const ContactForm: React.FC = () => {
     message: ''
   });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
+    setError('');
     
-    // Construct the mailto link
-    const subject = encodeURIComponent(`LvlUp Inquiry: ${formData.goal} - ${formData.name}`);
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\n` +
-      `Email: ${formData.email}\n` +
-      `WhatsApp: ${formData.whatsapp}\n` +
-      `Interest: ${formData.goal}\n\n` +
-      `Message:\n${formData.message}`
-    );
-    
-    window.location.href = `mailto:help@lvlup.click?subject=${subject}&body=${body}`;
-    setSubmitted(true);
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+      
+      const result = await response.json();
+      
+      if (result.success) {
+        setSubmitted(true);
+      } else {
+        setError('Failed to submit inquiry. Please try again.');
+      }
+    } catch (err) {
+      setError('Failed to submit inquiry. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -69,7 +82,7 @@ const ContactForm: React.FC = () => {
                   <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                 </div>
                 <h3 className="text-2xl font-bold text-slate-900 mb-2">Inquiry Initialized</h3>
-                <p className="text-slate-600">Your email client should have opened. If not, please reach out directly to help@lvlup.click</p>
+                <p className="text-slate-600">Your inquiry has been received. We'll get back to you within 4 business hours.</p>
                 <button 
                   onClick={() => setSubmitted(false)}
                   className="mt-8 text-emerald-600 font-bold hover:underline"
@@ -137,11 +150,15 @@ const ContactForm: React.FC = () => {
                   />
                 </div>
                 <div className="md:col-span-2 pt-4">
+                  {error && (
+                    <p className="text-center mb-4 text-sm text-red-500">{error}</p>
+                  )}
                   <button 
                     type="submit"
-                    className="w-full bg-slate-900 text-white font-bold py-5 rounded-2xl hover:bg-emerald-600 transition-all shadow-xl hover:shadow-emerald-600/20 active:scale-[0.98]"
+                    disabled={loading}
+                    className="w-full bg-slate-900 text-white font-bold py-5 rounded-2xl hover:bg-emerald-600 transition-all shadow-xl hover:shadow-emerald-600/20 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    SEND
+                    {loading ? 'SENDING...' : 'SEND'}
                   </button>
                   <p className="text-center mt-4 text-xs text-slate-400">
                     Your information is strictly confidential and protected by NDA.
