@@ -17,11 +17,12 @@ const WhoWeServe: React.FC = () => {
 
   const containerStyle: React.CSSProperties = {
     position: 'relative',
-    borderRadius: '32px',
+    borderRadius: '24px',
     overflow: 'hidden',
     boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
     width: '100%',
-    height: '600px',
+    aspectRatio: '9 / 16',
+    maxHeight: '550px',
     backgroundColor: '#000'
   };
 
