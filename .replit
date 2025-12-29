@@ -47,3 +47,4 @@ publicDir = "dist"
 
 [userenv.shared]
 GA4_MEASUREMENT_ID = "G-CYTDFYQXRK"
+VITE_GA4_MEASUREMENT_ID = "G-CYTDFYQXRK"
