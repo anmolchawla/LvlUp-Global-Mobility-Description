@@ -1,6 +1,5 @@
 
-import React, { useEffect } from 'react';
-import ReactGA from 'react-ga4';
+import React from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -14,47 +13,6 @@ import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
 
 const App: React.FC = () => {
-
-  // Initialize GA4 and track visitor location and source on component mount
-  useEffect(() => {
-    // Initialize GA4
-    const measurementId = import.meta.env.VITE_GA4_MEASUREMENT_ID || '';
-    if (measurementId) {
-      ReactGA.initialize(measurementId);
-      
-      // Track UTM parameters and referrer source
-      const params = new URLSearchParams(window.location.search);
-      const source = params.get('utm_source') || document.referrer || 'direct';
-      const medium = params.get('utm_medium') || 'organic';
-      const campaign = params.get('utm_campaign') || 'none';
-
-      // Send custom event with source and medium
-      ReactGA.event('page_view_with_source', {
-        source: source,
-        medium: medium,
-        campaign: campaign,
-        timestamp: new Date().toISOString(),
-      });
-
-      // Attempt to get location (requires geolocation API permission)
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            ReactGA.event('location_captured', {
-              latitude: position.coords.latitude.toFixed(4),
-              longitude: position.coords.longitude.toFixed(4),
-              accuracy: position.coords.accuracy.toFixed(0),
-            });
-          },
-          (error) => {
-            // Location permission denied or unavailable - silently continue
-            console.debug('Location access not available');
-          }
-        );
-      }
-    }
-  }, []);
-
   return (
     <div className="min-h-screen flex flex-col relative">
       <Navbar />
